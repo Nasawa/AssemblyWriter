@@ -1,0 +1,31 @@
+PRINTS(prompt1);
+DEFINE(prompt1, "Welcome to AssemblyWriter v0.2! Dynamic after-the-fact string definitions!\n");
+
+
+DEFINE(ender, "\nThe End\n");This is a comment!
+DEFINE(next, "\n");
+
+Comments can go anywhere so long as they do not precede a command
+
+VAR(cake, 6);
+VAR(pie, 93);
+VAR(cheese, 44);
+PRINTI(cheese);
+PRINTS(next);
+
+LOOP(repeat);
+
+PRINTI(cake);
+PRINTS(next);
+
+ADD(cake, 2);
+GOIFLT(repeat, cake, 20);
+GOIFEQ(repeat, cake, 20);
+
+LOOP(gtlooper);
+
+DIV(pie, 2);
+
+GOIFGT(gtlooper, cheese, 20);
+
+PRINTS(ender);
