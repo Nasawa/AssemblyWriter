@@ -1,25 +1,27 @@
 .data
+prompt1: .asciiz "Welcome to AssemblyWriter v0.2! Dynamic after-the-fact string definitions!\n"
+ender: .asciiz "\nThe End\n"
 next: .asciiz "\n"
 .globl main
 .text
-li  $v0, 4
-la  $a0, prompt1
+li    $v0, 4
+la    $a0, prompt1
 syscall
 li $t0, 6
 li $t1, 93
 li $t2, 44
 move $a0, $t2
-li  $v0, 1
+li    $v0, 1
 syscall
-li  $v0, 4
-la  $a0, next
+li    $v0, 4
+la    $a0, next
 syscall
 repeat:
 move $a0, $t0
-li  $v0, 1
+li    $v0, 1
 syscall
-li  $v0, 4
-la  $a0, next
+li    $v0, 4
+la    $a0, next
 syscall
 addi $t0, $t0, 2
 blt $t0, 20, repeat
@@ -27,8 +29,8 @@ beq $t0, 20, repeat
 gtlooper:
 divi $t1, $t1, 2
 bgt $t2, 20, gtlooper
-li  $v0, 4
-la  $a0, ender
+li    $v0, 4
+la    $a0, ender
 syscall
 li $v0, 10
 syscall

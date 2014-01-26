@@ -1,9 +1,8 @@
 PRINTS(prompt1);
 DEFINE(prompt1, "Welcome to AssemblyWriter v0.2! Dynamic after-the-fact string definitions!\n");
-
-
-DEFINE(ender, "\nThe End\n");This is a comment!
+DEFINE(ender, "\nThe End\n");
 DEFINE(next, "\n");
+This is a comment!
 
 Comments can go anywhere so long as they do not precede a command
 
