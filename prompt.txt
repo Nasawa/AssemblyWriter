@@ -6,13 +6,15 @@ This is a comment!
 
 Comments can go anywhere so long as they do not precede a command
 
+PRINTL( );
+
 VAR(cake, 6);
 VAR(pie, 93);
 VAR(cheese, 44);
 PRINTI(cheese);
 PRINTS(next);
 
-LOOP(repeat);
+LOOP(repeat);;;
 
 PRINTI(cake);
 PRINTS(next);

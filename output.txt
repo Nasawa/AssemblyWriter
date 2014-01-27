@@ -7,6 +7,7 @@ next: .asciiz "\n"
 li    $v0, 4
 la    $a0, prompt1
 syscall
+ 
 li $t0, 6
 li $t1, 93
 li $t2, 44
@@ -17,6 +18,8 @@ li    $v0, 4
 la    $a0, next
 syscall
 repeat:
+
+
 move $a0, $t0
 li    $v0, 1
 syscall

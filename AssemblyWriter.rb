@@ -2,6 +2,7 @@ tVars = ["t0","t1","t2","t3","t4","t5","t6","t7","t8","t9"]
 content = Array.new
 definer = Array.new
 sPrinter = Array.new
+lPrinter = Array.new
 iPrinter = Array.new
 vars        = Array.new
 output    = Array.new
@@ -18,6 +19,7 @@ v2 = 0
 de = 0
 ps = 0
 pi = 0
+pl = 0
 o = 0
 l = 0
 a = 0
@@ -70,11 +72,21 @@ content = content.split(';')
             output[o] = sPrinter[ps] + "PRINTSTR"
         ps = ps + 1
         elsif
+		
+		content[i].include? "PRINTL("
+            lPrinter[pl] = content[i].delete("()").chomp("\r\n").split('PRINTL')[1]
+            output[o] = lPrinter[pl] + "PRINTLIT"
+        pl = pl + 1
+        elsif
 
         content[i].include? "PRINTI("
             iPrinter[pi] = content[i].delete("()").chomp("\r\n").split('PRINTI')[1]
             output[o] = iPrinter[pi] + "PRINTINT"
         pi = pi + 1
+        elsif
+		
+		content[i] == ""
+            output[o] = "NL"
         elsif
 
         content[i].include? "VAR("
@@ -145,6 +157,11 @@ File.open(outfile, "w") do |writer|
         if output[i].include? "PRINTSTR"
             writer.puts "li    $v0, 4\nla    $a0, #{output[i].chomp("PRINTSTR")}\nsyscall"
         end
+		
+		if output[i].include? "PRINTLIT"
+			writer.puts "#{output[i].split("PRINTLIT")[0]}"
+		end
+		
         if output[i].include? "PRINTINT"
             (0..vars.length - 1).each do |j|
                 if vars[j].include? output[i].chomp("PRINTINT")
@@ -152,6 +169,10 @@ File.open(outfile, "w") do |writer|
                 end
             end
         end
+		
+		if output[i] == "NL"
+			writer.puts ""
+		end
 
         if output[i].include? "VARME"
             temp = vars[v2].split(',')
