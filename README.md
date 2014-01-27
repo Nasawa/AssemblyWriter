@@ -11,9 +11,13 @@ SYNTAX:
 **Very early in development
 **Commands -MUST- be capitalized
 
+; - Any semicolon without text before it will create a blank space between commands
+
 PRINTS(str) - print string 'str'
 
 PRINTI(var) - print int 'var'
+
+PRINTL(literal) - prints text 'literal' such as comments or personalized code
 
 DEFINE(varname, str) - defines 'str' as 'varname' at beginning of file *works anywhere in file*
 
