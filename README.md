@@ -9,6 +9,7 @@ MIPS generated here is tested using Missouri State's MARS emulator: http://cours
 
 SYNTAX:
 **Very early in development
+
 **Commands -MUST- be capitalized
 
 ; - Any semicolon without text before it will create a blank space between commands
@@ -33,10 +34,10 @@ MULT(var, var | int) - multiplies var by var/int
 
 DIV(var, var | int) - divides var by var/int
 
-GOIFLT(loopname, var, int) - go to loopname if var is less than int
+GOIFLT(loopname, var, var | int) - go to loopname if var is less than int
 
-GOIFEQ(loopname, var, int) - go to loopname if var is equal than int
+GOIFEQ(loopname, var, var | int) - go to loopname if var is equal than int
 
-GOIFGT(loopname, var, int) - go to loopname if var is greater than int
+GOIFGT(loopname, var, var | int) - go to loopname if var is greater than int
 
 **Program ends on its own at EOF
