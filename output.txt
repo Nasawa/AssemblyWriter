@@ -14,6 +14,7 @@ syscall
 li $t0, 6
 li $t1, 92
 li $t2, 44
+li $t3, 18
 move $a0, $t2
 li    $v0, 1
 syscall
@@ -44,7 +45,7 @@ li    $v0, 4
 la    $a0, next
 syscall
 mul $t1, $t1, 2
-bgt $t0, 18, gtlooper
+bgt $t0, $t3, gtlooper
 li    $v0, 4
 la    $a0, ender
 syscall

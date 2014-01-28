@@ -9,8 +9,9 @@ Also, comments cannot precede a semicolon directly - you must instead add your n
 PRINTL(#Test Literal);;
 
 VAR(cake, 6);
-VAR(pie, 92);Yolo
+VAR(pie, 92);
 VAR(cheese, 44);
+VAR(meow, 18);
 PRINTI(cheese);
 PRINTS(next);
 
@@ -30,6 +31,6 @@ PRINTI(pie);
 PRINTS(next);
 MULT(pie, 2);
 
-GOIFGT(gtlooper, cake, 18);
+GOIFGT(gtlooper, cake, meow);
 
 PRINTS(ender);

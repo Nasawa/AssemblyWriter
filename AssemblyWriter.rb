@@ -274,32 +274,68 @@ File.open(outfile, "w") do |writer|
         
         if output[i].include? "GOIFEQ"
             temp = goeq[eq2].chomp("GOIFEQ").split(', ')
-            (0..vars.length - 1).each do |j|
-                if vars[j].include? temp[1]
-                    writer.puts "beq $#{tVars[j]}, #{temp[2]}, #{temp[0]}"
-                end
-            end
+			if temp[2].downcase == temp[2].upcase
+				(0..vars.length - 1).each do |j|
+					if vars[j].include? temp[1]
+						writer.puts "beq $#{tVars[j]}, #{temp[2]}, #{temp[0]}"
+					end
+				end
+			elsif
+				(0..vars.length - 1).each do |j|
+					if vars[j].include? temp[1]
+						(0..vars.length - 1).each do |q|
+							if vars[q].include? temp[2].strip()
+								writer.puts "beq $#{tVars[j]}, $#{tVars[q]}, #{temp[0]}"
+							end
+						end
+					end
+				end
+			end
             eq2 = eq2 + 1
         end
         
         if output[i].include? "GOIFLT"
             temp = golt[lt2].chomp("GOIFLT").split(', ')
-            (0..vars.length - 1).each do |j|
-                if vars[j].include? temp[1]
-                    writer.puts "blt $#{tVars[j]}, #{temp[2]}, #{temp[0]}"
-                end
-            end
+            if temp[2].downcase == temp[2].upcase
+				(0..vars.length - 1).each do |j|
+					if vars[j].include? temp[1]
+						writer.puts "blt $#{tVars[j]}, #{temp[2]}, #{temp[0]}"
+					end
+				end
+			elsif
+				(0..vars.length - 1).each do |j|
+					if vars[j].include? temp[1]
+						(0..vars.length - 1).each do |q|
+							if vars[q].include? temp[2].strip()
+								writer.puts "blt $#{tVars[j]}, $#{tVars[q]}, #{temp[0]}"
+							end
+						end
+					end
+				end
+			end
             lt2 = lt2 + 1
         end
 
 
         if output[i].include? "GOIFGT"
             temp = gogt[gt2].chomp("GOIFGT").split(', ')
-            (0..vars.length - 1).each do |j|
-                if vars[j].include? temp[1]
-                    writer.puts "bgt $#{tVars[j]}, #{temp[2]}, #{temp[0]}"
-                end
-            end
+            if temp[2].downcase == temp[2].upcase
+				(0..vars.length - 1).each do |j|
+					if vars[j].include? temp[1]
+						writer.puts "bgt $#{tVars[j]}, #{temp[2]}, #{temp[0]}"
+					end
+				end
+			elsif
+				(0..vars.length - 1).each do |j|
+					if vars[j].include? temp[1]
+						(0..vars.length - 1).each do |q|
+							if vars[q].include? temp[2].strip()
+								writer.puts "bgt $#{tVars[j]}, $#{tVars[q]}, #{temp[0]}"
+							end
+						end
+					end
+				end
+			end
             gt2 = gt2 + 1
         end
 
