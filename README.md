@@ -25,13 +25,13 @@ VAR(varname, int) - defines a variable 'varname' as 'int'
 
 LOOP(loopname) - creates a loopback point for commands such as 'goiflt'
 
-ADD(var, int) - adds int to var
+ADD(var, var | int) - adds var/int to var
 
-SUB(var, int) - subtracts int from var
+SUB(var, var | int) - subtracts var/int from var
 
-MULT(var, int) - multiplies var by int
+MULT(var, var | int) - multiplies var by var/int
 
-DIV(var, int) - divides var by int
+DIV(var, var | int) - divides var by var/int
 
 GOIFLT(loopname, var, int) - go to loopname if var is less than int
 
