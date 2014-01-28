@@ -151,7 +151,7 @@ File.open(outfile, "w") do |writer|
         writer.puts "#{temp[0]}: .asciiz #{temp[1].strip()}"
     end
 
-    writer.puts".globl main\n.text"
+    writer.puts".globl main\n.text\nmain:"
 
     (0..output.length - 1).each do |i|
         if output[i].include? "PRINTSTR"
@@ -182,41 +182,89 @@ File.open(outfile, "w") do |writer|
 
         if output[i].include? "ADDME"
             temp = add[a2].split(',')
-            (0..vars.length - 1).each do |j|
-                if vars[j].include? temp[0]
-                    writer.puts "addi $#{tVars[j]}, $#{tVars[j]}, #{temp[1].strip()}"
-                end
-            end
+			if temp[1].downcase == temp[1].upcase
+				(0..vars.length - 1).each do |j|
+					if vars[j].include? temp[0]
+						writer.puts "addi $#{tVars[j]}, $#{tVars[j]}, #{temp[1].strip()}"
+					end
+				end
+			elsif
+				(0..vars.length - 1).each do |j|
+					if vars[j].include? temp[0]
+						(0..vars.length - 1).each do |q|
+							if vars[q].include? temp[1].strip()
+								writer.puts "add $#{tVars[j]}, $#{tVars[j]}, $#{tVars[q]}"
+							end
+						end
+					end
+				end
+			end
         a2 = a2 + 1
         end
         
         if output[i].include? "SUBME"
             temp = sub[s2].split(',')
-            (0..vars.length - 1).each do |j|
-                if vars[j].include? temp[0]
-                    writer.puts "subi $#{tVars[j]}, $#{tVars[j]}, #{temp[1].strip()}"
-                end
-            end
+            if temp[1].downcase == temp[1].upcase
+				(0..vars.length - 1).each do |j|
+					if vars[j].include? temp[0]
+						writer.puts "subi $#{tVars[j]}, $#{tVars[j]}, #{temp[1].strip()}"
+					end
+				end
+			elsif
+				(0..vars.length - 1).each do |j|
+					if vars[j].include? temp[0]
+						(0..vars.length - 1).each do |q|
+							if vars[q].include? temp[1].strip()
+								writer.puts "sub $#{tVars[j]}, $#{tVars[j]}, $#{tVars[q]}"
+							end
+						end
+					end
+				end
+			end
         s2 = s2 + 1
         end
         
         if output[i].include? "MULTME"
             temp = mult[m2].split(',')
-            (0..vars.length - 1).each do |j|
-                if vars[j].include? temp[0]
-                    writer.puts "multi $#{tVars[j]}, $#{tVars[j]}, #{temp[1].strip()}"
-                end
-            end
+            if temp[1].downcase == temp[1].upcase
+				(0..vars.length - 1).each do |j|
+					if vars[j].include? temp[0]
+						writer.puts "mul $#{tVars[j]}, $#{tVars[j]}, #{temp[1].strip()}"
+					end
+				end
+			elsif
+				(0..vars.length - 1).each do |j|
+					if vars[j].include? temp[0]
+						(0..vars.length - 1).each do |q|
+							if vars[q].include? temp[1].strip()
+								writer.puts "mul $#{tVars[j]}, $#{tVars[j]}, $#{tVars[q]}"
+							end
+						end
+					end
+				end
+			end
         m2 = m2 + 1
         end
         
         if output[i].include? "DIVME"
             temp = div[d2].split(',')
-            (0..vars.length - 1).each do |j|
-                if vars[j].include? temp[0]
-                    writer.puts "divi $#{tVars[j]}, $#{tVars[j]}, #{temp[1].strip()}"
-                end
-            end
+            if temp[1].downcase == temp[1].upcase
+				(0..vars.length - 1).each do |j|
+					if vars[j].include? temp[0]
+						writer.puts "div $#{tVars[j]}, $#{tVars[j]}, #{temp[1].strip()}"
+					end
+				end
+			elsif
+				(0..vars.length - 1).each do |j|
+					if vars[j].include? temp[0]
+						(0..vars.length - 1).each do |q|
+							if vars[q].include? temp[1].strip()
+								writer.puts "div $#{tVars[j]}, $#{tVars[j]}, $#{tVars[q]}"
+							end
+						end
+					end
+				end
+			end
         d2 = d2 + 1
         end
 

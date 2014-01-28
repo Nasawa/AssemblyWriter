@@ -1,15 +1,15 @@
-PRINTS(prompt1);
+PRINTS(prompt1);;
 DEFINE(prompt1, "Welcome to AssemblyWriter v0.2! Dynamic after-the-fact string definitions!\n");
 DEFINE(ender, "\nThe End\n");
-DEFINE(next, "\n");
-This is a comment!
+DEFINE(next, "\n");This is a comment!
 
-Comments can go anywhere so long as they do not precede a command
+Comments can go anywhere so long as they do not precede a command on the same line
+Also, comments cannot precede a semicolon directly - you must instead add your new-line to the end of the preceding statement.
 
-PRINTL( );
+PRINTL(#Test Literal);;
 
 VAR(cake, 6);
-VAR(pie, 93);
+VAR(pie, 92);Yolo
 VAR(cheese, 44);
 PRINTI(cheese);
 PRINTS(next);
@@ -19,14 +19,17 @@ LOOP(repeat);;;
 PRINTI(cake);
 PRINTS(next);
 
-ADD(cake, 2);
+ADD(cake, 2);;
+ADD(cheese, cake);;
 GOIFLT(repeat, cake, 20);
 GOIFEQ(repeat, cake, 20);
 
 LOOP(gtlooper);
+SUB(cake, 2);
+PRINTI(pie);
+PRINTS(next);
+MULT(pie, 2);
 
-DIV(pie, 2);
-
-GOIFGT(gtlooper, cheese, 20);
+GOIFGT(gtlooper, cake, 18);
 
 PRINTS(ender);
